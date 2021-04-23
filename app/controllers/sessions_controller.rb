@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
   skip_before_action :authenticate_request, only: [:login, :signup]
 
   def login
+    puts params
     command = AuthenticateUser.call(params[:username], params[:password])
     if command.success?
       user = command.result[:user]
