@@ -46,3 +46,6 @@ gem 'jwt'
 
 # simple_command authentication / authorization
 gem 'simple_command'
+
+# jsonapi serialier
+gem 'jsonapi-serializer'

@@ -2,6 +2,7 @@ class ApplicationController < ActionController::API
   include ::ActionController::Cookies
 
   before_action :authenticate_request
+  before_action :snake_case_params
   attr_reader :current_user
 
   private
@@ -14,6 +15,10 @@ class ApplicationController < ActionController::API
 
   def owner?(thing)
     @current_user == thing.owner
+  end
+
+  def snake_case_params
+    request.parameters.deep_transform_keys!(&:underscore)
   end
 
 end

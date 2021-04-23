@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       # for heroku
       #cookies.signed[:jwt] = {value: command.result[:token], httponly: true, same_site: :none, secure: true, expires: 1.hour.from_now}
 
-      render json: UserSerializer.new(user).to_serialized_json
+      render json: UserSerializer.new(user).serializable_hash.to_json
     else
       render json: { error: "Unauthorized" }, status: :unauthorized
     end
@@ -30,7 +30,7 @@ class SessionsController < ApplicationController
       # for heroku
       #cookies.signed[:jwt] = {value: jwt, httponly: true, same_site: :none, secure: true, expires: 1.hour.from_now}
 
-      render json: UserSerializer.new(user).to_serialized_json
+      render json: UserSerializer.new(user).serializable_hash.to_json
     else
       render json: {error: user.errors.full_messages}, status: 422
     end
