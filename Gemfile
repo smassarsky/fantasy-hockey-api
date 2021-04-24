@@ -49,3 +49,5 @@ gem 'simple_command'
 
 # jsonapi serialier
 gem 'jsonapi-serializer'
+
+gem 'net-http'

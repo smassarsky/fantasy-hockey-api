@@ -91,6 +91,10 @@ GEM
     mini_portile2 (2.5.0)
     minitest (5.14.4)
     msgpack (1.4.2)
+    net-http (0.1.1)
+      net-protocol
+      uri
+    net-protocol (0.1.0)
     nio4r (2.5.7)
     nokogiri (1.11.3)
       mini_portile2 (~> 2.5.0)
@@ -165,6 +169,7 @@ GEM
     thor (1.1.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
+    uri (0.10.1)
     websocket-driver (0.7.3)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -181,6 +186,7 @@ DEPENDENCIES
   jsonapi-serializer
   jwt
   listen (~> 3.3)
+  net-http
   pg (~> 1.1)
   puma (~> 5.0)
   rack-cors
