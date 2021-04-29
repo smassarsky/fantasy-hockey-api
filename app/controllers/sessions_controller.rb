@@ -41,6 +41,10 @@ class SessionsController < ApplicationController
     render json: { success: "logged out" }
   end
 
+  def dashboard
+    render json: { success: 'You made it here!' }
+  end
+
   private
 
   def user_params

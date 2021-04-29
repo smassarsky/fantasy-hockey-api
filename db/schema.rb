@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_24_014630) do
+ActiveRecord::Schema.define(version: 2021_04_29_230808) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,30 @@ ActiveRecord::Schema.define(version: 2021_04_24_014630) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "invitations", force: :cascade do |t|
+    t.integer "matchup_id"
+    t.string "code"
+    t.string "nickname"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "matchups", force: :cascade do |t|
+    t.integer "owner_id"
+    t.integer "team_id"
+    t.string "name"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "picks", force: :cascade do |t|
+    t.integer "user_matchup_id"
+    t.integer "player_id"
+  end
+
   create_table "players", force: :cascade do |t|
     t.integer "api_id"
     t.string "name"
@@ -78,6 +102,15 @@ ActiveRecord::Schema.define(version: 2021_04_24_014630) do
     t.string "division"
     t.string "conference"
     t.string "website"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "user_matchups", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "matchup_id"
+    t.string "nickname"
+    t.integer "draft_order"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

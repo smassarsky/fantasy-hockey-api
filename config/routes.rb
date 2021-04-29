@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#logout'
   get '/dashboard', to: 'sessions#dashboard'
 
+  resources :matchups, only: [:index, :show, :create, :update, :destroy]
+
 end
