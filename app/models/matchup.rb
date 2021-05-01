@@ -1,5 +1,5 @@
 class Matchup < ApplicationRecord
-  belongs_to :owner, class_name "User"
+  belongs_to :owner, class_name: "User"
   belongs_to :team
 
   has_many :user_matchups
