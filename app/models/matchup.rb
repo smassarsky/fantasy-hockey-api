@@ -12,6 +12,12 @@ class Matchup < ApplicationRecord
   validates_presence_of :name, :start_date, :end_date, :team
   validates :status, inclusion: %w[Pre-Draft Draft Active Complete]
 
+  validates_uniqueness_of :name, scope: :owner_id
+
+  attribute :status, :string, default: -> {"Pre-Draft"}
+
+  validate :dates
+
   private
 
   def dates
