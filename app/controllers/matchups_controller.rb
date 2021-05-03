@@ -14,10 +14,11 @@ class MatchupsController < ApplicationController
 
   def create
     matchup = @current_user.owned_matchups.build(matchup_params)
+    matchup.user_matchups.build(user: @current_user)
     if matchup.save()
       render json: MatchupIndexSerializer.new(matchup).serializable_hash.to_json
     else
-      render json: { error: matchup.errors.full_messages}
+      render json: { error: matchup.errors.full_messages }, status: :bad_request
     end
   end
 
