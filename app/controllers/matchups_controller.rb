@@ -23,11 +23,22 @@ class MatchupsController < ApplicationController
   end
 
   def update
-
+    matchup = Matchup.find(params[:matchup][:id])
+    if exists_and_owner?(matchup)
+      if matchup.update(matchup_params)
+        render json: MatchupIndexSerializer.new(matchup).serializable_hash.to_json
+      else
+        render json: { error: matchup.errors.full_messages }, status: :bad_request
+      end
+    end
   end
 
   def destroy
-
+    matchup = Matchup.find(params[:id])
+    if exists_and_owner?(matchup)
+      matchup.destroy()
+      render json: { success: "Matchup Destroyed" }
+    end
   end
 
   private
